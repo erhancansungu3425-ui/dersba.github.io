@@ -67,9 +67,6 @@
             transform: translateX(5px);
         }
 
-        .lgs-mode { border-color: #ef4444 !important; }
-        .middle-mode { border-color: #3b82f6 !important; }
-
         .ai-glow {
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
             animation: pulse-glow 2s infinite ease-in-out;
@@ -83,16 +80,16 @@
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
 
-    <!-- ANA KONTEYNER -->
+    <!-- MAIN CONTAINER -->
     <div class="w-full max-w-[420px] h-[850px] max-h-[95vh] glass-panel shadow-2xl overflow-hidden flex flex-col relative">
         
-        <!-- ÜST NAVİGASYON -->
+        <!-- HEADER -->
         <header id="appNav" class="hidden px-6 py-4 flex justify-between items-center border-b border-white/5 bg-white/5 z-20">
             <div class="flex items-center gap-2">
                 <div class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
                     <i class="fa-solid fa-brain text-indigo-400 text-sm"></i>
                 </div>
-                <span id="appHeaderTitle" class="text-[10px] font-bold tracking-widest uppercase text-slate-400">Nova AI v3.6</span>
+                <span id="appHeaderTitle" class="text-[10px] font-bold tracking-widest uppercase text-slate-400">Nova AI v3.7</span>
             </div>
             <div class="flex gap-3">
                 <button onclick="showScreen('statsScreen')" class="text-slate-400 hover:text-white transition"><i class="fa-solid fa-chart-line"></i></button>
@@ -102,7 +99,7 @@
 
         <div class="flex-1 overflow-y-auto custom-scrollbar relative px-6 py-4">
             
-            <!-- KARŞILAMA EKRANI -->
+            <!-- WELCOME SCREEN -->
             <div id="welcomeScreen" class="screen active text-center h-full flex flex-col justify-center">
                 <div class="mb-8">
                     <div class="w-24 h-24 bg-gradient-to-tr from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto shadow-2xl rotate-3">
@@ -116,7 +113,7 @@
                 </button>
             </div>
 
-            <!-- KURULUM EKRANI -->
+            <!-- SETUP SCREEN -->
             <div id="setupScreen" class="screen">
                 <h2 class="text-2xl font-bold mb-6 mt-4">Profilini Oluştur</h2>
                 <div class="space-y-5">
@@ -139,7 +136,7 @@
                 </div>
             </div>
 
-            <!-- ANA PANEL (DASHBOARD) -->
+            <!-- DASHBOARD -->
             <div id="mainDashboard" class="screen">
                 <div class="flex items-center gap-4 mb-6">
                     <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center font-bold text-xl" id="avatarInitial">?</div>
@@ -152,16 +149,16 @@
                     </div>
                 </div>
 
-                <!-- ✨ AI MOTİVASYON KARTI -->
+                <!-- ✨ AI MOTIVATION CARD -->
                 <div id="motivationContainer" class="mb-6 p-4 border rounded-3xl relative overflow-hidden hidden ai-glow">
                     <div class="absolute top-2 right-2 flex gap-2">
                         <button onclick="speakMotivation()" class="text-indigo-400 hover:text-indigo-200 transition"><i class="fa-solid fa-volume-high"></i></button>
                     </div>
-                    <p id="motivationText" class="text-xs italic leading-relaxed pr-8 font-semibold">Nova analiz yapıyor...</p>
+                    <p id="motivationText" class="text-xs italic leading-relaxed pr-8 font-semibold">AI analiz yapıyor...</p>
                     <div class="mt-2 text-[9px] font-bold uppercase tracking-tighter" id="motivationSource">— Nova AI</div>
                 </div>
 
-                <!-- ARAÇLAR -->
+                <!-- ACTIONS -->
                 <div class="mb-6 grid grid-cols-2 gap-3">
                     <button onclick="generateDailyRecap()" class="p-4 bg-indigo-600/10 border border-indigo-500/20 rounded-3xl flex flex-col items-center gap-2 hover:bg-indigo-600/20 transition group">
                         <i class="fa-solid fa-calendar-check text-indigo-400 group-hover:scale-110 transition"></i>
@@ -169,11 +166,11 @@
                     </button>
                     <button onclick="generateAIStrategy()" class="p-4 bg-purple-600/10 border border-purple-500/20 rounded-3xl flex flex-col items-center gap-2 hover:bg-purple-600/20 transition group">
                         <i class="fa-solid fa-chess-knight text-purple-400 group-hover:scale-110 transition"></i>
-                        <span class="text-[10px] font-black uppercase tracking-tight">✨ Strateji Üret</span>
+                        <span class="text-[10px] font-black uppercase tracking-tight">✨ AI Strateji</span>
                     </button>
                 </div>
 
-                <!-- MOD SEÇİCİ -->
+                <!-- MOOD SELECTOR -->
                 <div class="mb-6">
                     <h3 class="text-[10px] font-black text-slate-500 uppercase mb-3 px-1">Bugün Nasıl Hissediyorsun?</h3>
                     <div class="grid grid-cols-4 gap-2">
@@ -196,16 +193,16 @@
                     </div>
                 </div>
 
-                <!-- AI DİNAMİK PROGRAM -->
+                <!-- AI DYNAMIC SCHEDULE -->
                 <div id="scheduleSection" class="mb-8 hidden">
                     <div class="flex items-center justify-between mb-4 px-1">
-                        <h3 id="scheduleTitle" class="text-[10px] font-black uppercase tracking-widest">✨ AI Destekli Program</h3>
+                        <h3 id="scheduleTitle" class="text-[10px] font-black uppercase tracking-widest">✨ AI Akıllı Program</h3>
                         <span id="currentMoodTag" class="text-[9px] px-2 py-0.5 rounded-full font-bold">...</span>
                     </div>
                     <div id="aiScheduleContainer" class="space-y-3"></div>
                 </div>
 
-                <!-- SAYAÇ VE AKSİYONLAR -->
+                <!-- TOOLS & TIMER -->
                 <div class="grid grid-cols-2 gap-4 mb-6">
                     <div id="timerCard" class="col-span-2 p-6 bg-white/5 border border-white/10 rounded-[2.5rem] flex items-center justify-between">
                         <div class="text-left">
@@ -219,7 +216,7 @@
                     
                     <button onclick="showScreen('examScreen')" class="p-5 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition group">
                         <i class="fa-solid fa-check-double text-emerald-400 mb-2"></i>
-                        <div class="text-[11px] font-bold">İlerleme Gir</div>
+                        <div class="text-[11px] font-bold">Veri Girişi</div>
                     </button>
                     
                     <button onclick="showScreen('solveScreen')" class="p-5 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition group">
@@ -229,55 +226,41 @@
 
                     <button onclick="showScreen('searchScreen')" class="col-span-2 p-5 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition flex items-center justify-center gap-3">
                         <i class="fa-solid fa-book-open text-amber-400"></i>
-                        <div class="text-[12px] font-black uppercase tracking-wider">✨ AI Konu Özeti & Görsel</div>
+                        <div class="text-[12px] font-black uppercase tracking-wider">✨ AI Konu Asistanı</div>
                     </button>
                 </div>
             </div>
 
-            <!-- TEKRAR EKRANI -->
-            <div id="recapScreen" class="screen">
-                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Dashboard</button>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-10 h-10 bg-indigo-500/20 rounded-xl flex items-center justify-center text-indigo-400"><i class="fa-solid fa-list-check"></i></div>
-                    <h2 class="text-2xl font-bold">Günlük Tekrar Listem</h2>
-                </div>
-                <div id="recapContent" class="space-y-4"></div>
-            </div>
-
-            <!-- ANALİZ GİRİŞ EKRANI -->
+            <!-- EXAM SCREEN -->
             <div id="examScreen" class="screen">
-                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Vazgeç</button>
-                <h2 id="examEntryTitle" class="text-2xl font-bold mb-6">Analiz Girişi</h2>
+                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri</button>
+                <h2 class="text-2xl font-bold mb-6">Analiz Girişi</h2>
                 <div class="space-y-6">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="p-4 bg-white/5 rounded-2xl">
-                            <label class="text-[10px] font-bold text-emerald-400 uppercase">Doğru / Başarı</label>
+                            <label class="text-[10px] font-bold text-emerald-400 uppercase">Doğru</label>
                             <input id="netD" type="number" class="w-full bg-transparent text-3xl font-black outline-none mt-2" placeholder="0">
                         </div>
                         <div class="p-4 bg-white/5 rounded-2xl">
-                            <label class="text-[10px] font-bold text-red-400 uppercase">Hata / Eksik</label>
+                            <label class="text-[10px] font-bold text-red-400 uppercase">Yanlış</label>
                             <input id="netY" type="number" class="w-full bg-transparent text-3xl font-black outline-none mt-2" placeholder="0">
                         </div>
                     </div>
                     <div class="p-4 bg-white/5 rounded-2xl">
-                        <label class="text-[10px] font-bold text-indigo-400 uppercase">Zorlandığın Ders</label>
+                        <label class="text-[10px] font-bold text-indigo-400 uppercase">Ders Seçimi</label>
                         <select id="weakLesson" class="w-full bg-transparent font-bold mt-2 outline-none">
                             <option value="Matematik" class="bg-[#0b0f1a]">Matematik</option>
                             <option value="Türkçe" class="bg-[#0b0f1a]">Türkçe</option>
-                            <option value="Fen Bilimleri" class="bg-[#0b0f1a]">Fen Bilimleri</option>
-                            <option value="Sosyal Bilgiler" class="bg-[#0b0f1a]">Sosyal Bilgiler</option>
-                            <option value="İngilizce" class="bg-[#0b0f1a]">İngilizce</option>
+                            <option value="Fen" class="bg-[#0b0f1a]">Fen Bilimleri</option>
                         </select>
                     </div>
-                    <button onclick="saveExam()" id="examSaveBtn" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold shadow-lg active:scale-95 transition uppercase tracking-widest">
-                        Veriyi Kaydet
-                    </button>
+                    <button onclick="saveExam()" class="w-full py-5 bg-indigo-600 rounded-2xl font-bold uppercase">Veriyi Kaydet</button>
                 </div>
             </div>
 
-            <!-- ✨ AI KONU ÖZETİ VE GÖRSELLEŞTİRME -->
+            <!-- AI SEARCH SCREEN -->
             <div id="searchScreen" class="screen">
-                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri</button>
                 <h2 class="text-2xl font-bold mb-2">✨ AI Konu Asistanı</h2>
                 <div class="relative mb-6">
                     <input id="topicQuery" type="text" placeholder="Hangi konuyu anlamadın?" class="w-full bg-white/5 border border-white/10 p-4 pr-12 rounded-2xl outline-none focus:border-indigo-500 transition">
@@ -286,28 +269,24 @@
                 <div id="searchResult" class="space-y-4"></div>
             </div>
 
-            <!-- ✨ AI SORU ÇÖZÜCÜ -->
+            <!-- AI SOLVE SCREEN -->
             <div id="solveScreen" class="screen">
-                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri Dön</button>
+                <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri</button>
                 <h2 class="text-2xl font-bold mb-2">✨ AI Soru Çözücü</h2>
-                <p class="text-slate-400 text-[10px] mb-6">Yapay zekanın gelişmiş mantık yürütme yeteneği ile soruyu çöz.</p>
                 <div class="space-y-4">
-                    <textarea id="questionInput" placeholder="Soru metni..." class="w-full h-32 bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-indigo-500 transition text-sm custom-scrollbar"></textarea>
-                    <button onclick="solveQuestion()" class="w-full py-4 bg-indigo-600 rounded-2xl font-bold flex items-center justify-center gap-2 active:scale-95 transition">
-                        <i class="fa-solid fa-microchip"></i> ✨ Mantık Yürüt ve Çöz
-                    </button>
+                    <textarea id="questionInput" placeholder="Soru metni..." class="w-full h-32 bg-white/5 border border-white/10 p-4 rounded-2xl outline-none focus:border-indigo-500 transition text-sm"></textarea>
+                    <button onclick="solveQuestion()" class="w-full py-4 bg-indigo-600 rounded-2xl font-bold">✨ Mantık Yürüt ve Çöz</button>
                 </div>
-                <div id="solveResult" class="mt-6 space-y-4"></div>
+                <div id="solveResult" class="mt-6"></div>
             </div>
 
-            <!-- KARNE EKRANI -->
+            <!-- STATS SCREEN -->
             <div id="statsScreen" class="screen">
                 <button onclick="showScreen('mainDashboard')" class="mb-6 text-slate-400 text-xs flex items-center gap-1"><i class="fa-solid fa-arrow-left"></i> Geri</button>
                 <h2 class="text-2xl font-bold mb-2">Gelişim Karnen</h2>
                 <div id="aiStrategyOutput" class="mb-6"></div>
                 <div id="statsList" class="space-y-3"></div>
             </div>
-
         </div>
     </div>
 
@@ -318,7 +297,7 @@
         let timeLeft = 25 * 60; 
         let isRunning = false;
 
-        // --- AI ÇEKİRDEK FONKSİYONLARI ---
+        // --- CORE AI FUNCTIONS (CLEANED OF BRAND NAMES) ---
         async function callAI(prompt, system = "Sen bir AI eğitim asistanısın.") {
             const maxRetries = 5;
             for (let i = 0; i < maxRetries; i++) {
@@ -346,7 +325,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        instances: { prompt: `An educational infographic for students about: ${prompt}. Minimalist, bright.` },
+                        instances: { prompt: `Infographic about: ${prompt}. Educational, simple.` },
                         parameters: { sampleCount: 1 }
                     })
                 });
@@ -361,7 +340,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: `Say in a warm, encouraging Turkish voice: ${text}` }] }],
+                        contents: [{ parts: [{ text: `Say clearly in Turkish: ${text}` }] }],
                         generationConfig: { 
                             responseModalities: ["AUDIO"],
                             speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } } 
@@ -371,40 +350,29 @@
                 const data = await response.json();
                 const pcmData = data.candidates[0].content.parts[0].inlineData.data;
                 const audioBlob = pcmToWav(pcmData, 24000);
-                const url = URL.createObjectURL(audioBlob);
-                const audio = new Audio(url);
-                audio.play();
-            } catch (e) { console.error("TTS Hatası:", e); }
+                new Audio(URL.createObjectURL(audioBlob)).play();
+            } catch (e) { console.error("Audio error", e); }
         }
 
         function pcmToWav(base64, sampleRate) {
             const buffer = Uint8Array.from(atob(base64), c => c.charCodeAt(0)).buffer;
             const wavHeader = new ArrayBuffer(44);
             const view = new DataView(wavHeader);
-            view.setUint32(0, 0x52494646, false); 
-            view.setUint32(4, 36 + buffer.byteLength, true);
-            view.setUint32(8, 0x57415645, false); 
-            view.setUint32(12, 0x666d7420, false); 
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true); 
-            view.setUint16(22, 1, true); 
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, sampleRate * 2, true);
-            view.setUint16(32, 2, true);
-            view.setUint16(34, 16, true);
-            view.setUint32(36, 0x64617461, false); 
+            view.setUint32(0, 0x52494646, false); view.setUint32(4, 36 + buffer.byteLength, true);
+            view.setUint32(8, 0x57415645, false); view.setUint32(12, 0x666d7420, false);
+            view.setUint32(16, 16, true); view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true); view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true); view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true); view.setUint32(36, 0x64617461, false);
             view.setUint32(40, buffer.byteLength, true);
             return new Blob([wavHeader, buffer], { type: 'audio/wav' });
         }
 
-        // --- UYGULAMA MANTIĞI ---
+        // --- APP FLOW ---
         window.onload = () => { if (user) { initDashboard(); showScreen('mainDashboard'); generateMotivation(); } };
 
         function showScreen(id) {
-            document.querySelectorAll('.screen').forEach(s => {
-                s.style.display = 'none';
-                s.classList.remove('active');
-            });
+            document.querySelectorAll('.screen').forEach(s => { s.style.display = 'none'; s.classList.remove('active'); });
             const target = document.getElementById(id);
             target.style.display = 'block';
             void target.offsetWidth;
@@ -427,35 +395,28 @@
             document.getElementById('displayUserName').innerText = user.name;
             document.getElementById('avatarInitial').innerText = user.name[0].toUpperCase();
             document.getElementById('displayGrade').innerText = `${user.grade}. SINIF`;
-            if(user.isLGS) {
-                document.getElementById('displayGrade').className = "text-[10px] px-2 py-0.5 rounded text-white font-bold bg-red-600";
-                timeLeft = 40 * 60;
-                document.getElementById('timerLabel').innerText = "LGS Etüt Sayacı";
-            }
+            if(user.isLGS) timeLeft = 40 * 60;
             updateTimerDisplay();
         }
 
         async function generateMotivation() {
             const text = document.getElementById('motivationText');
             document.getElementById('motivationContainer').classList.remove('hidden');
-            const res = await callAI(`Ben ${user.name}, ${user.grade}. sınıfım. Beni ders çalışmaya teşvik edecek AI tabanlı bir motivasyon cümlesi kur (10 kelime).`);
+            const res = await callAI(`Ben ${user.name}. ${user.grade}. sınıf öğrencisi için 10 kelimelik AI motivasyon sözü söyle.`);
             if(res) text.innerText = res.replace(/"/g, '');
         }
 
-        function speakMotivation() {
-            const text = document.getElementById('motivationText').innerText;
-            speakAIText(text);
-        }
+        function speakMotivation() { speakAIText(document.getElementById('motivationText').innerText); }
 
         async function generateAIStrategy() {
             showScreen('statsScreen');
             const output = document.getElementById('aiStrategyOutput');
             output.innerHTML = '<div class="loading-shimmer h-32 rounded-2xl w-full"></div>';
             const context = user.exams.slice(0, 3).map(e => `${e.d} Doğru, ${e.y} Yanlış (${e.lesson})`).join(', ');
-            const strategy = await callAI(`Öğrenci ${user.grade}. sınıfta. Sonuçlar: ${context}. 3 maddelik strateji önerisi yap.`, "AI Eğitim Koçusun.");
+            const strategy = await callAI(`Öğrenci sonuçları: ${context}. 3 maddelik strateji raporu çıkar.`, "Sen bir AI eğitim uzmanısın.");
             if(strategy) {
-                output.innerHTML = `<div class="p-5 bg-purple-600/10 border border-purple-500/20 rounded-2xl text-[11px] text-purple-200">
-                    <h3 class="font-black mb-2 uppercase tracking-widest flex items-center gap-2"><i class="fa-solid fa-chess-knight"></i> AI Strateji Raporu</h3>
+                output.innerHTML = `<div class="p-5 bg-purple-600/10 border border-purple-500/20 rounded-2xl text-[11px]">
+                    <h3 class="font-black mb-2 uppercase tracking-widest"><i class="fa-solid fa-chess-knight"></i> AI Strateji Raporu</h3>
                     ${strategy.replace(/\n/g, '<br>')}
                 </div>`;
             }
@@ -467,14 +428,14 @@
             const resDiv = document.getElementById('searchResult');
             resDiv.innerHTML = '<div class="loading-shimmer h-64 rounded-2xl w-full"></div>';
             const [explanation, imageUrl] = await Promise.all([
-                callAI(`${user.grade}. sınıf için "${query}" konusunu özetle.`),
+                callAI(`${user.grade}. sınıf için "${query}" konusunu kısaca özetle.`),
                 generateAIImage(query)
             ]);
             resDiv.innerHTML = `
-                <div class="p-5 bg-white/5 border border-white/10 rounded-2xl text-xs text-slate-300">
+                <div class="p-5 bg-white/5 border border-white/10 rounded-2xl text-xs">
                     <div class="mb-4">${explanation.replace(/\n/g, '<br>')}</div>
-                    ${imageUrl ? `<img src="${imageUrl}" class="w-full rounded-xl mb-4" alt="Konu Görseli">` : ''}
-                    <button onclick="speakAIText('${explanation.replace(/'/g, "\\'")}')" class="w-full py-2 bg-indigo-500/20 rounded-lg font-bold text-[10px] uppercase">Sesli Dinle</button>
+                    ${imageUrl ? `<img src="${imageUrl}" class="w-full rounded-xl mb-4">` : ''}
+                    <button onclick="speakAIText('${explanation.replace(/'/g, "\\'")}')" class="w-full py-2 bg-indigo-500/10 rounded-lg text-[10px]">SESLİ DİNLE</button>
                 </div>
             `;
         }
@@ -484,10 +445,10 @@
             if(!question) return;
             const resDiv = document.getElementById('solveResult');
             resDiv.innerHTML = '<div class="loading-shimmer h-40 rounded-2xl w-full"></div>';
-            const solution = await callAI(`Soru: "${question}" \n\n Soruyu adım adım AI mantığıyla çöz.`);
+            const solution = await callAI(`Soru: "${question}". Bu soruyu AI mantığıyla adım adım çöz.`);
             if(solution) {
                 resDiv.innerHTML = `<div class="p-5 bg-indigo-600/10 border border-indigo-500/20 rounded-2xl text-[12px]">
-                    <div class="text-indigo-400 font-black mb-2 uppercase tracking-tighter">✨ AI Çözüm Analizi</div>
+                    <div class="text-indigo-400 font-black mb-2 uppercase">✨ AI Analizi</div>
                     ${solution.replace(/\n/g, '<br>')}
                 </div>`;
             }
@@ -497,57 +458,42 @@
             const container = document.getElementById('aiScheduleContainer');
             document.getElementById('scheduleSection').classList.remove('hidden');
             container.innerHTML = '<div class="loading-shimmer h-20 rounded-xl w-full"></div>';
-            const moodNames = { happy: 'Enerjik', normal: 'Dengeli', tired: 'Yorgun', stressed: 'Stresli' };
-            const res = await callAI(`${user.grade}. sınıf, modum ${moodNames[mood]}. JSON: {"tasks": [{"time": "18:00", "title": "Başlık", "desc": "Görev"}]}`, "Sadece JSON.");
+            const res = await callAI(`Mod: ${mood}, Zayıf ders: ${user.lastWeakLesson}. Bana 3 görevlik JSON döndür: {"tasks": [{"time": "18:00", "title": "Başlık", "desc": "Görev"}]}`, "Sadece JSON.");
             if(res) {
                 try {
                     const data = JSON.parse(res.match(/\{.*\}/s)[0]);
-                    container.innerHTML = data.tasks.map(t => `
-                        <div class="schedule-card p-4 rounded-2xl border border-white/5">
-                            <div class="text-[9px] font-black text-indigo-400">${t.time}</div>
-                            <div class="text-xs font-bold text-white">${t.title}</div>
-                            <div class="text-[9px] text-slate-400">${t.desc}</div>
-                        </div>
-                    `).join('');
-                } catch(e) { container.innerHTML = '<p class="text-xs">Hata oluştu.</p>'; }
+                    container.innerHTML = data.tasks.map(t => `<div class="schedule-card p-4 rounded-2xl border border-white/5">
+                        <div class="text-[9px] font-black text-indigo-400">${t.time}</div>
+                        <div class="text-xs font-bold">${t.title}</div>
+                        <div class="text-[9px] text-slate-400">${t.desc}</div>
+                    </div>`).join('');
+                } catch(e) { container.innerHTML = '<p class="text-xs">Program üretilemedi.</p>'; }
             }
         }
 
         function toggleTimer() {
             const btn = document.getElementById('timerBtn');
             if(isRunning) { clearInterval(timer); btn.innerHTML = '<i class="fa-solid fa-play"></i>'; }
-            else { timer = setInterval(updateTimer, 1000); btn.innerHTML = '<i class="fa-solid fa-pause"></i>'; }
+            else { timer = setInterval(() => { if(timeLeft <= 0) { clearInterval(timer); return; } timeLeft--; updateTimerDisplay(); }, 1000); btn.innerHTML = '<i class="fa-solid fa-pause"></i>'; }
             isRunning = !isRunning;
         }
 
-        function updateTimer() {
-            if(timeLeft <= 0) { clearInterval(timer); isRunning = false; return; }
-            timeLeft--; updateTimerDisplay();
-        }
-
         function updateTimerDisplay() {
-            const mins = Math.floor(timeLeft / 60);
-            const secs = timeLeft % 60;
-            document.getElementById('timerDisplay').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            document.getElementById('timerDisplay').innerText = `${Math.floor(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}`;
         }
 
         function saveExam() {
-            const d = parseFloat(document.getElementById('netD').value) || 0;
-            const y = parseFloat(document.getElementById('netY').value) || 0;
-            const lesson = document.getElementById('weakLesson').value;
-            user.exams.unshift({ date: new Date().toLocaleDateString('tr-TR'), d, y, lesson });
-            user.lastWeakLesson = lesson;
+            user.exams.unshift({ date: new Date().toLocaleDateString('tr-TR'), d: document.getElementById('netD').value, y: document.getElementById('netY').value, lesson: document.getElementById('weakLesson').value });
+            user.lastWeakLesson = document.getElementById('weakLesson').value;
             localStorage.setItem('nova_multi_v1', JSON.stringify(user));
             showScreen('mainDashboard');
         }
 
         function renderStats() {
-            document.getElementById('statsList').innerHTML = user.exams.map(ex => `
-                <div class="p-4 bg-white/5 rounded-2xl flex justify-between border-l-2 border-indigo-500">
-                    <div><div class="text-[10px] text-slate-500">${ex.date}</div><div class="text-sm font-bold">${ex.lesson}</div></div>
-                    <div class="text-right font-black">${ex.d}D / ${ex.y}Y</div>
-                </div>
-            `).join('');
+            document.getElementById('statsList').innerHTML = user.exams.map(ex => `<div class="p-4 bg-white/5 rounded-2xl flex justify-between border-l-2 border-indigo-500">
+                <div><div class="text-[10px] text-slate-500">${ex.date}</div><div class="text-sm font-bold">${ex.lesson}</div></div>
+                <div class="text-right font-black">${ex.d}D / ${ex.y}Y</div>
+            </div>`).join('');
         }
 
         function resetApp() { if(confirm("Sıfırlansın mı?")) { localStorage.clear(); location.reload(); } }
